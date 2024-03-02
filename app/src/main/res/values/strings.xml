@@ -1,0 +1,22 @@
+<resources>
+    <string name="app_name">Github User</string>
+    <string name="searchbar_hint">Cari User Github</string>
+    <string name="subtitle_app">Search Github User</string>
+    <string name="list_user">User Github:</string>
+    <string name="username">UsernameGithub</string>
+    <string name="url_github">Github.com/username</string>
+    <string name="found_user">0 User Found</string>
+    <string name="name_user">Nama User</string>
+    <string name="followers">N Followers</string>
+    <string name="following">N Following</string>
+
+    <string name="name">Faris Afra Mu\'taz</string>
+    <string name="email">diafan74@gmail.com\nMD - 44</string>
+    <string name="about_desc">I am a student at IPB University Vocational School majoring in Software Engineering Technology who is passionate about learning and developing skills. Have interest and expertise in Web Development, Mobile App, and Multimedia / Editing.</string>
+    <string name="social_media">Social Media</string>
+    <string name="social_media_desc">Github: FarisAfra | LinkedIn: Faris-Afra \nInstagram: @Faris_Afra</string>
+    <string name="about_me">About Me</string>
+
+    <string name="tab_1">Followers</string>
+    <string name="tab_2">Following</string>
+</resources>
