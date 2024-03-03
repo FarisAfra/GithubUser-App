@@ -1,4 +1,4 @@
-package com.farisafra.githubuser.viewmodel
+package com.farisafra.githubuser.data.viewmodel
 
 import android.util.Log
 import androidx.lifecycle.LiveData
@@ -29,7 +29,6 @@ class DetailViewModel: ViewModel() {
                 override fun onFailure(call: Call<DetailUserResponse>, t: Throwable) {
                     Log.e("TAG", "onFailure: ${t.message}")
                 }
-
             })
     }
 

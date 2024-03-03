@@ -1,4 +1,4 @@
-package com.farisafra.githubuser.viewmodel
+package com.farisafra.githubuser.data.viewmodel
 
 import android.util.Log
 import androidx.lifecycle.LiveData
@@ -9,9 +9,6 @@ import com.farisafra.githubuser.data.response.UserGithubResponse
 import com.farisafra.githubuser.data.retrofit.ApiClient
 import retrofit2.Call
 import retrofit2.Response
-import retrofit2.Retrofit
-import retrofit2.http.Query
-import javax.security.auth.callback.Callback
 
 class UserViewModel: ViewModel() {
 
@@ -35,7 +32,6 @@ class UserViewModel: ViewModel() {
                 override fun onFailure(call: Call<UserGithubResponse>, t: Throwable) {
                     Log.e("MainActivity", "onFailure: ${t.message}")
                 }
-
             })
     }
 

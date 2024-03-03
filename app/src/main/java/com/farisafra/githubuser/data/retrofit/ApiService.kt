@@ -5,8 +5,6 @@ import com.farisafra.githubuser.data.response.User
 import com.farisafra.githubuser.data.response.UserGithubResponse
 import retrofit2.Call
 import retrofit2.http.GET
-import retrofit2.http.Header
-import retrofit2.http.Headers
 import retrofit2.http.Path
 import retrofit2.http.Query
 

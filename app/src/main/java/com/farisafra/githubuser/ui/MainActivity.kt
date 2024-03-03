@@ -14,7 +14,7 @@ import com.farisafra.githubuser.data.response.User
 import com.farisafra.githubuser.data.response.UserGithubResponse
 import com.farisafra.githubuser.data.retrofit.ApiClient
 import com.farisafra.githubuser.databinding.ActivityMainBinding
-import com.farisafra.githubuser.viewmodel.UserViewModel
+import com.farisafra.githubuser.data.viewmodel.UserViewModel
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -43,6 +43,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
             }
 
         })
+
         viewModel = ViewModelProvider(this, ViewModelProvider.NewInstanceFactory()).get(
             UserViewModel::class.java)
 
@@ -51,16 +52,13 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
             rvSearchuser.setHasFixedSize(true)
             rvSearchuser.adapter = adapter
 
-
             btnSearch.setOnClickListener {
                 searchUser()
             }
 
             searchUser.setOnKeyListener { v, keyCode, event ->
                 if (event.action == KeyEvent.ACTION_DOWN && keyCode == KeyEvent.KEYCODE_ENTER){
-
                     searchUser()
-
                     return@setOnKeyListener true
                 }
                 return@setOnKeyListener false
@@ -70,7 +68,6 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
                 if (it != null){
                     adapter.setList(it)
                     showLoading(false)
-
                 }
             })
 
@@ -85,7 +82,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
             if (query.isEmpty()) return
             showLoading(true)
             viewModel.setSearchUser(query)
-
+            totalUser()
         }
 
         binding.searchUser.setOnEditorActionListener { _, actionId, _ ->
@@ -101,10 +98,8 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
 
 
     private fun searchUser(isDefaultSearch: Boolean = false) {
-
         showLoading(true)
         totalUser()
-
     }
 
     private fun totalUser (){
@@ -145,7 +140,6 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
         binding.userfound.text = "$count User Found"
     }
 
-
     private fun showLoading(isLoading: Boolean) {
         if (isLoading) {
             binding.progressBar.visibility = View.VISIBLE
@@ -161,5 +155,4 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
     override fun onClick(v: View?) {
 
     }
-
 }

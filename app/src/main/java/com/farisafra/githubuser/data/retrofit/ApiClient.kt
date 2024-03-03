@@ -6,13 +6,16 @@ import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
 object ApiClient {
+    private const val API_KEY = "token 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"
+
     val authInterceptor = Interceptor { chain ->
         val req = chain.request()
         val requestHeaders = req.newBuilder()
-            .addHeader("Authorization", "token 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")
+            .addHeader("Authorization", API_KEY)
             .build()
         chain.proceed(requestHeaders)
     }
+
     val client = OkHttpClient.Builder()
         .addInterceptor(authInterceptor)
         .build()

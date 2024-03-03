@@ -9,7 +9,7 @@ import androidx.lifecycle.ViewModelProvider
 import com.bumptech.glide.Glide
 import com.farisafra.githubuser.R
 import com.farisafra.githubuser.databinding.ActivityDetailBinding
-import com.farisafra.githubuser.viewmodel.DetailViewModel
+import com.farisafra.githubuser.data.viewmodel.DetailViewModel
 
 class DetailActivity : AppCompatActivity(), View.OnClickListener {
 
@@ -40,7 +40,6 @@ class DetailActivity : AppCompatActivity(), View.OnClickListener {
         viewModel.setUserDetail(username.toString())
         viewModel.getUserDetail().observe(this, {
             if (it != null){
-
                 binding.apply {
                     tvNama.text = it.name
                     tvUsername.text = it.login
@@ -52,7 +51,6 @@ class DetailActivity : AppCompatActivity(), View.OnClickListener {
                         .centerCrop()
                         .into(imgAvatar)
                 }
-
                 binding.progressBar.visibility = View.GONE
             }
         })
