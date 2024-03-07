@@ -1,4 +1,4 @@
-package com.farisafra.githubuser.ui
+package com.farisafra.githubuser.ui.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -31,12 +31,12 @@ class UserAdapter: RecyclerView.Adapter<UserAdapter.UserViewHolder>() {
 
             binding.apply {
                 Glide.with(itemView)
-                    .load(user.avatar_url)
+                    .load(user.avatarUrl)
                     .centerCrop()
                     .into(imgAvatar)
 
                 tvUsername.text = user.login
-                tvUrl.text = user.html_url
+                tvUrl.text = user.htmlUrl
             }
         }
     }

@@ -1,6 +1,9 @@
 package com.farisafra.githubuser.data.response
 
+import com.google.gson.annotations.SerializedName
+
 data class UserGithubResponse(
-    val total_count : Int,
+    @SerializedName("total_count")
+    val totalCount : Int,
     val items : ArrayList<User>
 )

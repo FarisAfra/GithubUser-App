@@ -1,4 +1,4 @@
-package com.farisafra.githubuser.ui
+package com.farisafra.githubuser.ui.fragment
 
 import android.os.Bundle
 import android.view.View
@@ -7,13 +7,15 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.farisafra.githubuser.R
 import com.farisafra.githubuser.databinding.FragmentFollowBinding
-import com.farisafra.githubuser.data.viewmodel.FollowersViewModel
+import com.farisafra.githubuser.data.viewmodel.FollowingViewModel
+import com.farisafra.githubuser.ui.DetailActivity
+import com.farisafra.githubuser.ui.adapter.UserAdapter
 
-class FollowersFragment: Fragment(R.layout.fragment_follow) {
+class FollowingFragment: Fragment(R.layout.fragment_follow) {
 
     private var _binding : FragmentFollowBinding? = null
     private val binding get() = _binding!!
-    private lateinit var viewModel: FollowersViewModel
+    private lateinit var viewModel: FollowingViewModel
     private lateinit var adapter: UserAdapter
     private lateinit var username: String
 
@@ -36,9 +38,9 @@ class FollowersFragment: Fragment(R.layout.fragment_follow) {
 
         showLoading(true)
         viewModel = ViewModelProvider(this, ViewModelProvider.NewInstanceFactory()).get(
-            FollowersViewModel::class.java)
-        viewModel.setListFollowers(username)
-        viewModel.getListFollowers().observe(viewLifecycleOwner, {
+            FollowingViewModel::class.java)
+        viewModel.setListFollowing(username)
+        viewModel.getListFollowing().observe(viewLifecycleOwner, {
             if (it != null){
                 adapter.setList(it)
                 showLoading(false)

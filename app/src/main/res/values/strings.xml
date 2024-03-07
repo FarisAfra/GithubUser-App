@@ -19,4 +19,12 @@
 
     <string name="tab_1">Followers</string>
     <string name="tab_2">Following</string>
+    <string name="avatar_github">Avatar Github</string>
+    <string name="favMenu">Favorite User</string>
+    <string name="setMenu">Theme Setting</string>
+    <string name="dark_mode">Dark Mode  </string>
+    <string name="btn_back">Button Kembali</string>
+    <string name="btn_share">Button Share</string>
+    <string name="btn_search">Button Search</string>
+    <string name="icon_github">Icon Github</string>
 </resources>

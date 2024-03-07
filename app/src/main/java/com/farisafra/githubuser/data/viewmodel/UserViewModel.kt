@@ -25,7 +25,7 @@ class UserViewModel: ViewModel() {
                 ) {
                     if ( response.isSuccessful){
                         listUsers.postValue(response.body()?.items)
-                        totalcount.postValue(response.body()?.total_count)
+                        totalcount.postValue(response.body()?.totalCount)
                     }
                 }
 
@@ -39,7 +39,4 @@ class UserViewModel: ViewModel() {
         return listUsers
     }
 
-    fun getTotalCount(): LiveData<Int>{
-        return totalcount
-    }
 }

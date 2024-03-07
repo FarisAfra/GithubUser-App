@@ -6,21 +6,22 @@ import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
 object ApiClient {
-    private const val API_KEY = "token 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"
 
-    val authInterceptor = Interceptor { chain ->
+    private val mySuperScretKey = com.farisafra.githubuser.BuildConfig.KEY
+
+    private val authInterceptor = Interceptor { chain ->
         val req = chain.request()
         val requestHeaders = req.newBuilder()
-            .addHeader("Authorization", API_KEY)
+            .addHeader("Authorization", "token" + mySuperScretKey)
             .build()
         chain.proceed(requestHeaders)
     }
 
-    val client = OkHttpClient.Builder()
+    private val client = OkHttpClient.Builder()
         .addInterceptor(authInterceptor)
         .build()
 
-    private const val BASE_URL = "https://api.github.com/"
+    private const val BASE_URL = com.farisafra.githubuser.BuildConfig.BASE_URL
 
     val retrofit = Retrofit.Builder()
         .baseUrl(BASE_URL)

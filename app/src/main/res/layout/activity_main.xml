@@ -4,40 +4,32 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/colorPrimary"
     android:orientation="vertical"
     tools:context=".ui.MainActivity">
 
-    <TextView
-        android:id="@+id/nama_main"
-        style="@style/poppinsMedium"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="24dp"
-        android:layout_marginTop="16dp"
-        android:text="@string/app_name"
-        android:textSize="16sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+    <com.google.android.material.appbar.AppBarLayout
+        android:layout_width="match_parent"
+        android:background="@drawable/navbar_radius"
+        android:layout_height="wrap_content">
 
-    <TextView
-        android:id="@+id/project"
-        style="@style/poppinsExtraLight"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="24dp"
-        android:text="@string/subtitle_app"
-        android:textSize="10sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/nama_main" />
-
-
+        <com.google.android.material.appbar.MaterialToolbar
+            android:id="@+id/topAppBar"
+            app:titleTextColor="@color/colorOnPrimary"
+            app:titleTextAppearance="@style/Toolbar.TitleText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:menu="@menu/option_menu"
+            app:title="@string/app_name"
+            app:subtitle="@string/subtitle_app"
+            app:subtitleTextColor="@color/colorOnPrimary"
+            app:subtitleTextAppearance="@style/ToolbarSubtitle" />
+    </com.google.android.material.appbar.AppBarLayout>
 
     <LinearLayout
         android:id="@+id/searchBar"
         android:layout_width="320dp"
         android:layout_height="50dp"
-        android:layout_marginTop="72dp"
+        android:layout_marginTop="84dp"
         android:background="@drawable/bg_search"
         android:orientation="horizontal"
         app:layout_constraintEnd_toEndOf="parent"
@@ -62,12 +54,12 @@
 
         <ImageButton
             android:id="@+id/btn_search"
+            android:contentDescription="@string/btn_search"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:backgroundTint="@color/transparent"
-            android:src="@drawable/ic_search_btn"
-            />
+            android:src="@drawable/ic_search_btn" />
     </LinearLayout>
 
     <com.google.android.material.search.SearchView
@@ -116,5 +108,4 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         tools:visibility="gone" />
-
 </androidx.constraintlayout.widget.ConstraintLayout>

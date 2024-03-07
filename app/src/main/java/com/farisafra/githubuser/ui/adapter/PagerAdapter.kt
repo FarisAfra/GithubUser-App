@@ -1,4 +1,4 @@
-package com.farisafra.githubuser.ui
+package com.farisafra.githubuser.ui.adapter
 
 import android.content.Context
 import android.os.Bundle
@@ -7,6 +7,8 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentPagerAdapter
 import com.farisafra.githubuser.R
+import com.farisafra.githubuser.ui.fragment.FollowersFragment
+import com.farisafra.githubuser.ui.fragment.FollowingFragment
 
 class PagerAdapter(private val mCtx: Context, fm: FragmentManager,data: Bundle) : FragmentPagerAdapter(fm, BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT) {
 

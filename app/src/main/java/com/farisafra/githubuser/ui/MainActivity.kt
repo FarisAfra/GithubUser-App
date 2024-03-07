@@ -10,11 +10,14 @@ import android.view.inputmethod.EditorInfo
 import android.widget.Toast
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.farisafra.githubuser.R
 import com.farisafra.githubuser.data.response.User
 import com.farisafra.githubuser.data.response.UserGithubResponse
 import com.farisafra.githubuser.data.retrofit.ApiClient
 import com.farisafra.githubuser.databinding.ActivityMainBinding
 import com.farisafra.githubuser.data.viewmodel.UserViewModel
+import com.farisafra.githubuser.databinding.ActivityThemeBinding
+import com.farisafra.githubuser.ui.adapter.UserAdapter
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -22,6 +25,7 @@ import retrofit2.Response
 class MainActivity : AppCompatActivity(), View.OnClickListener {
 
     private lateinit var binding: ActivityMainBinding
+    private lateinit var bindingSetting: ActivityThemeBinding
     private lateinit var viewModel: UserViewModel
     private lateinit var adapter: UserAdapter
     private var USER_ID: String? = null
@@ -31,6 +35,23 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+
+        binding.topAppBar.setOnMenuItemClickListener { menuItem ->
+            when (menuItem.itemId) {
+                R.id.favoriteMenu -> {
+                    val intent = Intent(this, FavoriteActivity::class.java)
+                    startActivity(intent)
+                    true
+                }
+                R.id.settingMenu -> {
+                    val intent = Intent(this, ThemeActivity::class.java)
+                    startActivity(intent)
+                    true
+                }
+                else -> false
+            }
+        }
+
         adapter = UserAdapter()
         adapter.notifyDataSetChanged()
 
@@ -38,6 +59,9 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
             override fun onItemClicked(data: User) {
                 Intent(this@MainActivity, DetailActivity::class.java).also {
                     it.putExtra(DetailActivity.EXTRA_USERNAME, data.login)
+                    it.putExtra(DetailActivity.EXTRA_ID, data.id)
+                    it.putExtra(DetailActivity.EXTRA_AVATAR, data.avatarUrl)
+                    it.putExtra(DetailActivity.EXTRA_HTML, data.htmlUrl)
                     startActivity(it)
                 }
             }
@@ -74,6 +98,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
         }
 
         searchUser(isDefaultSearch = true)
+
     }
 
     private fun searchUser(){
@@ -96,7 +121,6 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
         }
     }
 
-
     private fun searchUser(isDefaultSearch: Boolean = false) {
         showLoading(true)
         totalUser()
@@ -115,7 +139,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
                 if (response.isSuccessful) {
                     val responseBody = response.body()
                     if (responseBody != null) {
-                        val totalCount = responseBody.total_count
+                        val totalCount = responseBody.totalCount
                         showUserFoundCount(totalCount)
 
                         adapter.setList(responseBody.items)
@@ -155,4 +179,5 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
     override fun onClick(v: View?) {
 
     }
+
 }
